@@ -11,8 +11,10 @@ public class TestPackedLocalDate {
 
     @Test
     public void testToEpochDay() {
-        long expected = -865389;
-        int input = 1895696408;
+//        int i = PackedLocalDate.pack((short)1329, (byte)1, (byte)31);
+//        System.out.println(i);
+        long expected = -234090;
+        int input = 822411551;
         long result = PackedLocalDate.toEpochDay(input);
         assertThat(result, is(expected));
     }
