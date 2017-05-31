@@ -7,37 +7,47 @@ import com.github.lwhite1.tablesaw.plotting.StandardColor;
 import com.github.lwhite1.tablesaw.plotting.StandardColors;
 import com.google.common.collect.Range;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
 
 import java.awt.*;
 import java.util.List;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 public class TestStandardColors {
 
     @Test
     public void testRandomColors() {
         int n = 5;
-        List<Color> colors = StandardColors.randomColors(5);
-        assertThat(colors.size(), is(n));
+        try {
+            List<Color> colors = StandardColors.randomColors(n);
+            assertThat(colors.size(), is(n));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
     public void testGetFilteredColors() {
-        Hue hue = Hue.Blue_7_5;
-        int maxChroma = 12;
-        int minChroma = 8;
-        int maxValue = 8;
-        int minValue = 4;
-        Range<Integer> chromaRange = Range.closed(minChroma, maxChroma);
-        Range<Integer> valueRange = Range.closed(minValue, maxValue);
+        Hue hue = Hue.Neutral;
+        int maxChroma = 11;
+        int minChroma = 5;
+        int maxValue = 6;
+        int minValue = 2;
+        int expectedSize = 3;
+        try {
+            Range<Integer> chromaRange = Range.closed(minChroma, maxChroma);
+            Range<Integer> valueRange = Range.closed(minValue, maxValue);
 
-        List<StandardColor> standardColors = StandardColors.getFilteredColors(hue, chromaRange, valueRange);
+            List<StandardColor> standardColors = StandardColors.getFilteredColors(hue, chromaRange, valueRange);
 
-        assertThat(standardColors.size(), is(3));
-        for(StandardColor c : standardColors) {
-            assertThat(c.chroma(), allOf(greaterThanOrEqualTo(minChroma), lessThanOrEqualTo(maxChroma)));
-            assertThat(c.value(), allOf(greaterThanOrEqualTo(minValue), lessThanOrEqualTo(maxValue)));
+            assertThat(standardColors.size(), is(expectedSize));
+            for (StandardColor c : standardColors) {
+                assertThat(c.chroma(), allOf(greaterThanOrEqualTo(minChroma), lessThanOrEqualTo(maxChroma)));
+                assertThat(c.value(), allOf(greaterThanOrEqualTo(minValue), lessThanOrEqualTo(maxValue)));
+            }
+        } catch (Exception e) {
+            fail(e.getMessage());
         }
     }
 
