@@ -3,7 +3,7 @@ package columns.packeddata;
 import com.github.lwhite1.tablesaw.columns.packeddata.PackedLocalDateTime;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.*;
 
 /* Created by AMXPC on 2017/5/28. */
 
