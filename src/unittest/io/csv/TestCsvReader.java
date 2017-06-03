@@ -86,18 +86,18 @@ public class TestCsvReader {
     public void testNextRow() {
         int input = -1;
         int result = CsvReader.nextRow(input);
-        int expected = 0;
+        String expected = "Error";
         assertThat(result, is(expected));
     }
 
     @Test
     public void testDetectType() {
         ArrayList<String> strings = new ArrayList<>();
-        strings.add("-34");
-        strings.add("91");
-        strings.add("0");
-        strings.add("10");
-        ColumnType result = CsvReader.detectType(null);
+        strings.add("");
+        strings.add("");
+        strings.add("");
+        strings.add("");
+        ColumnType result = CsvReader.detectType(strings);
         ColumnType expected = ColumnType.SKIP;
         assertThat(result, is(expected));
     }
