@@ -342,7 +342,7 @@ public class CsvReader {
    * The method {@code printColumnTypes()} can be used to print a list of the detected columns that can be corrected and
    * used to explicitely specify the correct column types.
    */
-  static ColumnType[] detectColumnTypes(String file, boolean header, char delimiter)
+  public static ColumnType[] detectColumnTypes(String file, boolean header, char delimiter)
       throws IOException {
 
     int linesToSkip = header ? 1 : 0;
@@ -390,7 +390,7 @@ public class CsvReader {
     return columnTypes.toArray(new ColumnType[columnTypes.size()]);
   }
 
-  private static int nextRow(int nextRow) {
+  public static int nextRow(int nextRow) {
     if (nextRow < 100) {
       return nextRow + 1;
     }
@@ -415,7 +415,7 @@ public class CsvReader {
     return nextRow + 10_000_000;
   }
 
-  private static ColumnType detectType(List<String> valuesList) {
+  public static ColumnType detectType(List<String> valuesList) {
 
     // Types to choose from. When more than one would work, we pick the first of the options
     ColumnType[] typeArray =  // we leave out category, as that is the default type

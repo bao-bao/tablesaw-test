@@ -18,8 +18,8 @@ public class TestPackedLocalDateTime {
 //        System.out.print(l);
 //        System.out.println(PackedLocalDateTime.toString(input));
 
-        String expected = "NA";
-        long input = 0x8000000000000000L;
+        String expected = "Error";
+        long input = 0x23985f4394da82L;
         String result = PackedLocalDateTime.toString(input);
         assertThat(result, is(expected));
     }

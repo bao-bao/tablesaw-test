@@ -39,7 +39,7 @@ public class TestStandardColors {
             Range<Integer> chromaRange = Range.closed(minChroma, maxChroma);
             Range<Integer> valueRange = Range.closed(minValue, maxValue);
 
-            List<StandardColor> standardColors = StandardColors.getFilteredColors(hue, chromaRange, valueRange);
+            List<StandardColor> standardColors = StandardColors.getFilteredColors(null, chromaRange, valueRange);
 
             assertThat(standardColors.size(), is(expectedSize));
             for (StandardColor c : standardColors) {
